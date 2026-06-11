@@ -17,7 +17,7 @@ env:
 
 jobs:
   build-android:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     steps:
     - name: Checkout code
@@ -29,10 +29,26 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Clean Cache
+      uses: OpenGrabeso/clean-cache@v1.1.0
+      with:
+        token: ${{ github.token }}
+        post: false
+        verbose: false
+        keep: 0 
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.9'#3.9以上cython无long The version above 3.9 of cython has no long integer
+        python-version: '3.9'
+
+    - name: Clean Cache
+      uses: OpenGrabeso/clean-cache@v1.1.0
+      with:
+        token: ${{ github.token }}
+        post: false
+        verbose: false
+        keep: 0 
 
     - name: Install system dependencies
       run: |
@@ -51,6 +67,14 @@ jobs:
         pip install buildozer cython==0.29.33 kivy kivymd
         #何意味 You will need it
         pip install python-for-android
+
+    - name: Clean Cache
+      uses: OpenGrabeso/clean-cache@v1.1.0
+      with:
+        token: ${{ github.token }}
+        post: false
+        verbose: false
+        keep: 0 
 
     - name: Build APK with Buildozer
       run: |
@@ -71,6 +95,14 @@ jobs:
         
         #查找所有APK文件并复制到bin目录 find all APK files and copy them to the bin directory
         find . -name "*.apk" -exec cp {} ./ \; 2>/dev/null || true
+
+    - name: Clean Cache
+      uses: OpenGrabeso/clean-cache@v1.1.0
+      with:
+        token: ${{ github.token }}
+        post: false
+        verbose: false
+        keep: 0 
 
     - name: Check if APK was built
       id: check-build
