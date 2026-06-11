@@ -1,14 +1,14 @@
 [app]
-title = appname#允许中文 Chinese allowed
-package.name = packagename
+title = MusicEditor#允许中文 Chinese allowed
+package.name = musiceditor
 package.domain = org.test#release模式不能用org.test 'org.test' can't be used in release mode
 source.dir = .#工作目录 working directory
-source.include_exts = py,png,jpg,kv,atlas#需要打包的文件类型 file types to be packed
-#source.include_patterns = image/* 打包image目录下的文件 Pack files in the image directory
+source.include_exts = py,png,jpg,kv,atlas,ttf,otf#需要打包的文件类型 file types to be packed
+source.include_patterns = assets/* 打包image目录下的文件 Pack files in the image directory
 version = 0.0.1
 #依赖库,后二为打包需要 The last two are needed for packaging
-requirements = python3,kivy,kivymd,libiconv,libffi
-#icon.filename = icon.png
+requirements = python3,kivy,kivymd,libiconv,libffi,mutagen
+icon.filename = assets/icon.png
 #presplash.filename = presplash.png
 #fullscreen = 0
 #orientation = portrait
