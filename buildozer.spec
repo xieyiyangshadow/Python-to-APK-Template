@@ -14,6 +14,6 @@ icon.filename = assets/image/icon.png
 android.statusbar_color = #000000
 android.api = 31
 android.ndk = 21b
-android.sdk = 31
+# android.sdk is deprecated and ignored by buildozer
 debug = 1
 p4a.branch = master

@@ -76,6 +76,23 @@ jobs:
         verbose: false
         keep: 0 
 
+    - name: Accept Android SDK licenses
+      run: |
+        # Pre-accept Android SDK license to prevent interactive prompt in CI
+        # buildozer downloads SDK to ~/.buildozer/android/platform/android-sdk
+        SDK_LICENSE_DIR="$HOME/.buildozer/android/platform/android-sdk/licenses"
+        mkdir -p "$SDK_LICENSE_DIR"
+        echo -e "\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$SDK_LICENSE_DIR/android-sdk-license"
+
+        # Also accept licenses for the system pre-installed SDK
+        if [ -d "$ANDROID_SDK_ROOT" ]; then
+          mkdir -p "$ANDROID_SDK_ROOT/licenses"
+          echo -e "\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_SDK_ROOT/licenses/android-sdk-license"
+          # Try sdkmanager --licenses as well (ignore errors if path doesn't exist)
+          yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
+          yes | $ANDROID_SDK_ROOT/tools/bin/sdkmanager --licenses 2>/dev/null || true
+        fi
+
     - name: Build APK with Buildozer
       run: |
         export PATH="$HOME/.local/bin:$PATH"
