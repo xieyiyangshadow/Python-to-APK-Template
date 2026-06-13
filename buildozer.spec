@@ -41,7 +41,7 @@ android.permissions = INTERNET
 #以下为release模式需要 Following is required for release mode
 
 #强制构建APK而不是AAB,但没用 Why does it build .aab instead of .apk?
-android.aab = False
+android.aab = True
 
 #签名配置 signature configuration
 android.keystore = /home/runner/work/RepositoryName/AndAgain/DomainName.PackageName.keystore
