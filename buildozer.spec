@@ -24,13 +24,13 @@ entrypoint = main.py
 #这些不要改 Don't change these
 android.accept_sdk_license = True
 android.allow_api_min = 21
-android.api = 33
+android.api = 28
 android.minapi = 21
 android.ndk = 25b
 exclude_patterns = **/test/*, **/tests/*
 android.gradle_download = https://services.gradle.org/distributions/gradle-7.6.4-all.zip
 android.gradle_plugin = 7.4.2
-android.sdk = 33
+android.sdk = 28
 android.ndk_api = 21
 p4a.gradle_dependencies = gradle:7.6.4
 p4a.bootstrap = sdl2
